@@ -35,12 +35,38 @@
                 transform: rotateY(360deg);
             }
         }
+
+        #fullscreenBtn {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+
+    background: transparent;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
     </style>
 </head>
-
 <body>
 
-    <img src="img/logoalmuslim.jpeg" class="logo" style="border-radius: 50%;">
+    <img src="img/logoalmuslim.jpeg" class="logo"  style="border-radius: 50%;">
+
+    <button id="fullscreenBtn">✨</button>
+
+    <script>
+    const fullscreenBtn = document.getElementById("fullscreenBtn");
+
+    fullscreenBtn.addEventListener("click", function() {
+
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            document.exitFullscreen();
+        }
+
+    });
+</script>
 
 </body>
 </html>
