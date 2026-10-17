@@ -1,72 +1,138 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logo Almuslim</title>
-
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            background: #0b2418;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            overflow: hidden;
-        }
-
-        .logo {
-            width: 300px;
-
-            animation: putar 4s linear infinite;
-
-            transform-style: preserve-3d;
-        }
-
-        @keyframes putar {
-            from {
-                transform: rotateY(0deg);
-            }
-
-            to {
-                transform: rotateY(360deg);
-            }
-        }
-
-        #fullscreenBtn {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-
-    background: transparent;
-    border: none;
-    font-size: 25px;
-    cursor: pointer;
-}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b2418">
+<title>Evaluasi Media Pesantren — TikTok</title>
+<style>
+:root{--bg:#07150f;--panel:#10291d;--green:#b6e36a;--gold:#f2c45c;--white:#f7f8f3;--muted:#b8c7bd}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif}
+body{overflow:hidden}
+.deck{height:100dvh;width:100%;position:relative;overflow:hidden;background:radial-gradient(circle at 85% 10%,#1a4730 0,transparent 32%),linear-gradient(135deg,#07150f,#0b2117 65%,#101d14)}
+.slide{display:none;height:100%;width:100%;padding:clamp(24px,6vw,76px);padding-bottom:100px;position:absolute;inset:0;flex-direction:column;justify-content:center;animation:appear .35s ease}
+.slide.active{display:flex}
+@keyframes appear{from{opacity:.2;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+.eyebrow{color:var(--green);text-transform:uppercase;letter-spacing:.18em;font-size:clamp(11px,1.5vw,15px);font-weight:700;margin-bottom:20px}
+h1{font-size:clamp(38px,7.3vw,88px);line-height:1.02;margin:0 0 24px;letter-spacing:-.045em;max-width:1000px}
+h2{font-size:clamp(30px,5vw,56px);line-height:1.06;margin:0 0 28px;letter-spacing:-.03em}
+p{font-size:clamp(17px,2.2vw,25px);line-height:1.5;color:var(--muted);max-width:900px;margin:0}
+.accent{color:var(--green)} .gold{color:var(--gold)}
+.subtitle{font-size:clamp(18px,2.5vw,28px);max-width:780px}
+.pill{display:inline-flex;border:1px solid #42634e;color:#dcebdc;border-radius:100px;padding:10px 16px;font-size:14px;margin:8px 8px 0 0}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;width:100%;max-width:1050px}
+.card{background:rgba(18,47,32,.86);border:1px solid rgba(182,227,106,.19);border-radius:22px;padding:clamp(18px,3vw,30px)}
+.metric{font-size:clamp(40px,7vw,74px);font-weight:800;color:var(--green);letter-spacing:-.05em}
+.metric-label{font-size:clamp(15px,2vw,20px);margin-top:4px;font-weight:700}
+.small{font-size:clamp(13px,1.5vw,16px);color:var(--muted);line-height:1.45;margin-top:12px}
+.list{display:grid;gap:14px;max-width:1000px}
+.item{display:flex;gap:16px;align-items:flex-start;font-size:clamp(17px,2.2vw,24px);line-height:1.35}
+.num{flex:0 0 36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--green);color:#112318;font-weight:800}
+.callout{border-left:4px solid var(--gold);padding:12px 0 12px 20px;margin-top:24px;max-width:900px;color:#f4e5b9;font-size:clamp(16px,2vw,22px);line-height:1.45}
+.footer{position:absolute;bottom:24px;left:clamp(24px,6vw,76px);right:clamp(24px,6vw,76px);display:flex;align-items:center;gap:14px;color:#9eafa4;font-size:13px}
+.progress{height:3px;background:#294334;flex:1;border-radius:9px;overflow:hidden}.bar{height:100%;background:var(--green);width:0;transition:width .25s}
+.controls{position:absolute;right:clamp(18px,4vw,48px);bottom:15px;display:flex;gap:8px}
+button{background:#183a27;color:white;border:1px solid #3d6448;border-radius:12px;padding:11px 15px;font-size:16px;cursor:pointer}
+button:hover{background:#275339}button:focus-visible{outline:2px solid var(--gold)}
+#counter{min-width:45px;text-align:center;align-self:center}
+.orb{position:absolute;width:240px;height:240px;border-radius:50%;right:5%;bottom:15%;border:1px solid #35583e;opacity:.45}
+.orb:before,.orb:after{content:"";position:absolute;inset:22px;border:1px solid #557d46;border-radius:50%}.orb:after{inset:50px;border-color:#b6e36a}
+@media(max-width:650px){.slide{padding:24px 22px 100px}.grid{grid-template-columns:1fr;gap:10px}.card{padding:15px 17px}.metric{font-size:42px}.footer{left:22px;right:22px;bottom:18px}.controls{right:18px;bottom:55px}.orb{width:130px;height:130px;right:-20px;bottom:10%;opacity:.2}.eyebrow{margin-bottom:13px}h2{margin-bottom:18px}.item{gap:10px}.num{flex-basis:30px;height:30px}}
+@media(max-height:520px){.slide{padding-top:18px;padding-bottom:75px}.eyebrow{margin-bottom:8px}h1{font-size:clamp(30px,6vw,54px);margin-bottom:12px}h2{font-size:clamp(26px,4vw,40px);margin-bottom:12px}.card{padding:12px 16px}.metric{font-size:38px}.list{gap:8px}.item{font-size:17px}.small{margin-top:5px}.footer{bottom:10px}.controls{bottom:7px}}
+</style>
 </head>
 <body>
-
-    <img src="img/logoalmuslim.jpeg" class="logo"  style="border-radius: 50%;">
-
-    <button id="fullscreenBtn">✨</button>
-
-    <script>
-    const fullscreenBtn = document.getElementById("fullscreenBtn");
-
-    fullscreenBtn.addEventListener("click", function() {
-
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen();
-        } else {
-            document.exitFullscreen();
-        }
-
-    });
+<main class="deck" aria-label="Presentasi evaluasi media pesantren">
+<section class="slide active">
+  <div class="eyebrow">Tim Media Pesantren • Evaluasi TikTok</div>
+  <h1>Membangun <span class="accent">Media Pesantren</span> yang Aktif, Terarah, dan Bermanfaat</h1>
+  <p class="subtitle">Evaluasi awal akun TikTok dan langkah sederhana untuk mengembangkan konten yang lebih konsisten serta menarik.</p>
+  <div style="margin-top:28px"><span class="pill">Evaluasi</span><span class="pill">Konten</span><span class="pill">Rencana Tindak Lanjut</span></div>
+  <div class="orb"></div>
+</section>
+<section class="slide">
+  <div class="eyebrow">01 • Tujuan</div><h2>Kenapa media pesantren perlu dikelola?</h2>
+  <div class="list">
+    <div class="item"><span class="num">1</span><span>Mengenalkan kegiatan dan kehidupan pesantren kepada masyarakat.</span></div>
+    <div class="item"><span class="num">2</span><span>Menyampaikan informasi resmi dengan jelas dan konsisten.</span></div>
+    <div class="item"><span class="num">3</span><span>Membangun kepercayaan wali santri dan calon santri.</span></div>
+    <div class="item"><span class="num">4</span><span>Mendokumentasikan kegiatan sebagai arsip digital pesantren.</span></div>
+  </div>
+  <div class="callout">Media bukan sekadar mengunggah video. Media adalah cara pesantren bercerita kepada masyarakat.</div>
+</section>
+<section class="slide">
+  <div class="eyebrow">02 • Data awal akun</div><h2>Angka awal yang bisa kita pelajari</h2>
+  <div class="grid">
+    <div class="card"><div class="metric">90</div><div class="metric-label">tayangan</div><div class="small"><a href="https://vt.tiktok.com/ZSgYyhP19/">lihat video</a></div><div class="small">24 suka • 3 komentar • 8 simpan</div></div>
+    <div class="card"><div class="metric gold">1,8rb</div><div class="metric-label">tayangan</div><div class="small"><a href="https://vt.tiktok.com/ZSgYUseUu/">lihat video</a></div><div class="small">41 suka • 7 komentar • 10 simpan</div></div>
+  </div>
+  <p style="margin-top:22px;font-size:clamp(14px,1.7vw,18px)">Catatan: ini data awal dari dua unggahan, belum cukup untuk menyimpulkan performa akun secara keseluruhan.</p>
+</section>
+<section class="slide">
+  <div class="eyebrow">03 • Pembacaan awal</div><h2>Apa yang bisa kita pelajari?</h2>
+  <div class="grid">
+    <div class="card"><div class="accent" style="font-weight:800;font-size:20px;margin-bottom:10px">Konten video</div><p style="font-size:18px">Video dengan sound tren memperoleh tayangan lebih tinggi pada contoh yang diamati.</p></div>
+    <div class="card"><div class="gold" style="font-weight:800;font-size:20px;margin-bottom:10px">Konten informasi</div><p style="font-size:18px">Flyer tetap penting untuk informasi resmi, tetapi dapat didukung video singkat agar lebih mudah ditemukan.</p></div>
+  </div>
+  <div class="callout">Jangan hanya mengejar viral. Ukur juga apakah konten dipahami, dibagikan, disimpan, dan membantu tujuan pesantren.</div>
+</section>
+<section class="slide">
+  <div class="eyebrow">04 • Bahan evaluasi tim</div><h2>Hal yang perlu dibahas bersama</h2>
+  <div class="list">
+    <div class="item"><span class="num">1</span><span><b>Konsistensi:</b> siapa mengambil video, mengedit, menulis caption, dan mengunggah?</span></div>
+    <div class="item"><span class="num">2</span><span><b>Jenis konten:</b> kegiatan harian, prestasi santri, edukasi, profil, dan informasi PPDB.</span></div>
+    <div class="item"><span class="num">3</span><span><b>Kualitas video:</b> pembuka menarik, suara jelas, gambar stabil, dan teks mudah dibaca.</span></div>
+    <div class="item"><span class="num">4</span><span><b>Evaluasi:</b> tayangan, waktu tonton jika tersedia, suka, komentar, bagikan, dan simpan.</span></div>
+    <div class="item"><span class="num">5</span><span><b>Etika:</b> izin pengambilan gambar, menjaga adab santri, dan memeriksa informasi sebelum tayang.</span></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">05 • Rencana sederhana</div><h2>Usulan langkah berikutnya</h2>
+  <div class="grid">
+    <div class="card"><div class="metric">01</div><div class="metric-label">Susun kalender konten</div><div class="small">Tentukan tema dan jadwal unggah mingguan yang realistis.</div></div>
+    <div class="card"><div class="metric">02</div><div class="metric-label">Ambil stok video</div><div class="small">Rekam beberapa momen kegiatan dengan format vertikal 9:16.</div></div>
+    <div class="card"><div class="metric">03</div><div class="metric-label">Pakai pola pembuka</div><div class="small">Mulai dengan momen, pertanyaan, atau informasi paling menarik.</div></div>
+    <div class="card"><div class="metric">04</div><div class="metric-label">Evaluasi berkala</div><div class="small">Catat hasil setiap unggahan dan bandingkan setelah beberapa minggu.</div></div>
+  </div>
+</section>
+<section class="slide">
+  <div class="eyebrow">Penutup</div><h1>Konten yang baik bukan hanya <span class="gold">ditonton</span>, tetapi juga membawa manfaat.</h1>
+  <p class="subtitle">Mari jadikan TikTok sebagai jendela kegiatan, nilai, dan prestasi pesantren.</p>
+  <div style="margin-top:30px;color:var(--green);font-weight:700;letter-spacing:.08em">TERIMA KASIH</div>
+</section>
+<div class="footer"><span id="sectionName">Pembukaan</span><div class="progress"><div class="bar" id="bar"></div></div><span id="counter">1 / 8</span></div>
+<div class="controls">
+  <button id="prev" aria-label="Slide sebelumnya">←</button>
+  <button id="next" aria-label="Slide berikutnya">Lanjut →</button>
+  <button id="full" aria-label="Layar penuh">⛶</button>
+</div>
+</main>
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+const names=['Pembukaan','Tujuan','Data awal','Pembacaan awal','Bahan evaluasi','Rencana','Kesepakatan','Penutup'];
+let index=0;
+function show(n){
+ index=(n+slides.length)%slides.length;
+ slides.forEach((s,i)=>s.classList.toggle('active',i===index));
+ document.getElementById('counter').textContent=(index+1)+' / '+slides.length;
+ document.getElementById('sectionName').textContent=names[index];
+ document.getElementById('bar').style.width=((index+1)/slides.length*100)+'%';
+}
+document.getElementById('prev').addEventListener('click',()=>show(index-1));
+document.getElementById('next').addEventListener('click',()=>show(index+1));
+document.getElementById('full').addEventListener('click',async()=>{
+ try{if(!document.fullscreenElement) await document.documentElement.requestFullscreen(); else await document.exitFullscreen();}catch(e){alert('Mode layar penuh tidak didukung browser ini.');}
+});
+document.addEventListener('keydown',e=>{
+ if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(index+1);}
+ if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(index-1);}
+ if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1);
+});
+let touchX=0;
+document.addEventListener('touchstart',e=>{touchX=e.changedTouches[0].screenX},{passive:true});
+document.addEventListener('touchend',e=>{const dx=e.changedTouches[0].screenX-touchX;if(Math.abs(dx)>65)show(index+(dx<0?1:-1));},{passive:true});
+show(0);
 </script>
-
 </body>
 </html>
